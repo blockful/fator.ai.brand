@@ -28,13 +28,15 @@
   --fator-rail-dark: #404b51;   /* rules inside a graphite band */
   --fator-red-on-paper: #c0392b;
   --fator-red-on-dark: #ff9a9a;
+  --fator-error-wash: #f9ebe9;  /* v3: icon-tile ground behind a destructive icon */
 
   /* ── Tier 2: numeric primitives ──────────────────────────────── */
   --rounded-none: 0px;
-  --rounded-sm: 2px;    /* button, input, chip */
-  --rounded-md: 3px;    /* card, panel */
-  --rounded-lg: 4px;    /* image crop. The brand never passes 4px */
-  --rounded-full: 999px;/* status pill and avatar only */
+  --rounded-sm: 2px;    /* icon tile, eyebrow chip, peak tag */
+  --rounded-md: 3px;    /* legacy; v3 screens barely use it */
+  --rounded-lg: 4px;    /* button, input, card, sidebar active item */
+  --rounded-xl: 6px;    /* the panel frame only (v3). Nothing passes 6px */
+  --rounded-full: 999px;/* status chip, count badge and avatar only */
 
   --space-0: 0px;
   --space-px: 1px;
@@ -121,7 +123,7 @@
   --secondary: var(--fator-grey);
   --secondary-foreground: var(--fator-graphite);
   --muted: var(--fator-grey);
-  --muted-foreground: rgb(32 33 37 / 0.5);
+  --muted-foreground: #89898b; /* v3 "text/secondary": solid, replaces graphite at 50% */
 
   /* accent is the selected and hover wash, with dark cyan ink */
   --accent: var(--fator-cyan-wash);
@@ -129,6 +131,7 @@
 
   --destructive: var(--fator-red-on-paper);
   --destructive-foreground: var(--fator-paper);
+  --destructive-wash: var(--fator-error-wash);
 
   --border: rgb(32 33 37 / 0.12);
   --input: rgb(32 33 37 / 0.12);
@@ -137,7 +140,7 @@
   /* the dark cyan: strokes, links, the active tab bar, data strokes, icons */
   --accent-strong: var(--fator-cyan-dark);
 
-  --radius: var(--rounded-sm);
+  --radius: var(--rounded-lg); /* v3: controls and cards sit at 4px */
 
   /* Fator additions shadcn has no slot for */
   --graphite: var(--fator-graphite);

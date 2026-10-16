@@ -36,6 +36,7 @@
   --color-graphite: var(--graphite);
   --color-highlight: var(--highlight);
   --color-highlight-chip: var(--highlight-chip);
+  --color-destructive-wash: var(--destructive-wash);
   --color-wash: var(--wash);
   --color-tile: var(--tile);
   --color-rail-on-dark: var(--rail-on-dark);
@@ -44,6 +45,7 @@
   --radius-sm: var(--rounded-sm);
   --radius-md: var(--rounded-md);
   --radius-lg: var(--rounded-lg);
+  --radius-xl: var(--rounded-xl);
   --radius-full: var(--rounded-full);
 
   --font-sans: var(--font-sans);
@@ -61,7 +63,7 @@
   .type-subtitle    { font: 400 var(--text-lg)/1.45  var(--font-sans); }
   .type-body        { font: 400 var(--text-base)/1.5 var(--font-sans); }
   .type-body-sm     { font: 400 var(--text-sm)/1.5   var(--font-sans); }
-  .type-body-sm-med { font: 500 var(--text-sm)/1.5   var(--font-sans); }
+  .type-body-sm-med { font: 500 var(--text-sm)/1.4   var(--font-sans); }
   .type-caption     { font: 400 var(--text-xs)/1.4   var(--font-sans); }
   .type-value       { font: 500 var(--text-value)/1.2 var(--font-mono); letter-spacing: var(--tracking-mono); }
   .type-label       { font: 500 var(--text-xs)/1.2   var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
@@ -93,7 +95,7 @@
         wash: "var(--wash)",
         tile: "var(--tile)",
       },
-      borderRadius: { none: "0px", sm: "2px", md: "3px", lg: "4px", full: "999px" },
+      borderRadius: { none: "0px", sm: "2px", md: "3px", lg: "4px", xl: "6px", full: "999px" },
       fontFamily: { sans: ["Switzer", "system-ui", "sans-serif"], mono: ["Space Grotesk", "monospace"] },
     },
   }

@@ -38,9 +38,10 @@ if [ "$MODE" != "--copy-only" ]; then
   hit "radius above 4px (2px chip, 3px card, 4px badge; 50%/999px allowed on avatars and status pills)" \
       'border-radius: ?([5-9]|[1-9][0-9]+)px' 'border-radius: ?(999|50%)'
   # 303134 is the flattened malha stroke (#FAFAF8 at 7% on #202125), documented in templates/deck.html.
+  # 89898b (product muted text) and f9ebe9 (error wash) are v3 screen-dialect derivations, SKILL.md §2.
   hit "off-palette hex (anything outside the seven-colour ramp and its documented derivations)" \
       '#(0[0-9a-f]{5}|[1-9a-f][0-9a-f]{5})' \
-      '#(fafaf8|202125|f2f2f2|e9e9e8|bcf7fd|1ac3d8|a9dde2|ecf9f9|404b51|c0392b|ff9a9a|0b0c0d|303134|fff|000|FAFAF8|202125|BCF7FD|1AC3D8|A9DDE2|ECF9F9)'
+      '#(fafaf8|202125|f2f2f2|e9e9e8|bcf7fd|1ac3d8|a9dde2|ecf9f9|404b51|c0392b|ff9a9a|0b0c0d|303134|89898b|f9ebe9|fff|000|FAFAF8|202125|BCF7FD|1AC3D8|A9DDE2|ECF9F9)'
   hit "external images (a forwarded deck must render offline)" 'src="http'
 fi
 hit "em and en dashes" '—|–'

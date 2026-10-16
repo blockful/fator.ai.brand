@@ -95,7 +95,9 @@ colour is listed once even when four tokens point at it.
 
 Documented derivations, allowed: `#404b51` rails on graphite, `rgba(32,33,37,.12)` rails on paper,
 `rgba(250,250,248,.6)` and `rgba(188,247,253,.6)` muted on graphite, `rgba(32,33,37,.06)` tile fill.
-Error red is `#c0392b` on paper and `#ff9a9a` on graphite. **Nothing else.** The brand ships no
+Error red is `#c0392b` on paper and `#ff9a9a` on graphite. The product UI (v3 screens) adds two:
+`#89898b`, its solid muted text, and `#f9ebe9`, the wash behind a destructive icon (see `ui/`).
+**Nothing else.** The brand ships no
 green, no amber, no purple: if a status needs a third state, ask before inventing one.
 
 Rules: paper is the default ground; graphite is for covers, closings and dark bands; cyan is never a
