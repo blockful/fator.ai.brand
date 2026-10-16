@@ -1,0 +1,65 @@
+/*
+  Fator AI — Design tokens (brand refresh, Aug 2026)
+  Source of truth: Figma file 5NeLWpK0hvQIZqDHnt03LJ
+  Collections: "Brand" (colors) + "Typography" (fonts).
+  Token names mirror the WEB code syntax set on the Figma variables.
+*/
+
+:root {
+  /* ── Color — Brand collection ────────────────────────── */
+  --bg-page: #fafaf8;
+  --bg-dark: #202125;
+  --bg-muted: #f2f2f2;
+  --bg-wash-cyan: #ecf9f9;
+  --bg-chip-on-cyan: #a9dde2;
+  --fill-tile: rgba(32, 33, 37, 0.06);
+
+  --accent-cyan: #bcf7fd;
+  --accent-cyan-dark: #1ac3d8;
+
+  --text-primary: #fafaf8;          /* light text on dark */
+  --text-inverted: #202125;         /* dark text on light */
+  --text-muted: rgba(32, 33, 37, 0.5);
+  --text-muted-light: rgba(250, 250, 248, 0.6);
+  --text-accent-light: #bcf7fd;
+  --text-accent-dark: #1ac3d8;
+  --text-accent-muted: rgba(188, 247, 253, 0.6);
+
+  --border-dark: #202125;
+  --border-dark-blue: #404b51;      /* rails on dark sections */
+  --border-grey: rgba(32, 33, 37, 0.12); /* rails on light sections */
+  --border-primary-light: #bcf7fd;
+  --border-primary-dark: #1ac3d8;
+
+  /* ── Typography — Typography collection ──────────────── */
+  --font-body: "Switzer", system-ui, -apple-system, sans-serif;
+  --font-mono: "Space Grotesk", ui-monospace, "SFMono-Regular", monospace;
+
+  --fs-display: clamp(34px, 2.15rem + 1.7vw, 56px);  /* LP/Display + LP/Título */
+  --fs-headline: clamp(28px, 1.6rem + 0.95vw, 40px); /* LP/Declaração */
+  --fs-lead: 22px;                                   /* LP/Card Título */
+  --fs-subhead: 18px;                                /* LP/Descrição */
+  --fs-body: 16px;                                   /* LP/Corpo */
+  --fs-small: 14px;                                  /* LP/Legenda */
+  --fs-label: 12px;                                  /* Mono/Label */
+  --ls-mono: 1px;
+
+  /* ── Grid ────────────────────────────────────────────── */
+  --page-max: 1440px;      /* full canvas incl. gutters; extra viewport width becomes margin */
+  --page-gutter: 40px;     /* outside the rails; collapses to 0 on mobile (see below) */
+  --section-pad: 40px;     /* inside the rails */
+  --grid-rule: 1px;
+  --navbar-height: 72px;
+
+  /* ── Motion ──────────────────────────────────────────── */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@media (max-width: 720px) {
+  :root {
+    /* Sections bleed to the screen edge on mobile — no outer margin. */
+    --page-gutter: 0px;
+    --section-pad: 20px;
+  }
+}

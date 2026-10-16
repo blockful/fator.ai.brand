@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fator AI · Deck</title>
+
+<!-- Brand fonts. Offline or forwarded file? Replace these two links with the contents of
+     fonts-embedded.css from the private skills repo (Switzer 400/500 + Space Grotesk 500 as base64). -->
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════════════
+   Fator AI deck shell · 1280x720 · brand tokens Aug 2026
+   Clone this file, keep the shell, replace the slides. Never restyle the shell.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root{
+  /* colour: the seven-colour ramp */
+  --bg-page:#fafaf8; --bg-dark:#202125; --bg-grey:#e9e9e8;
+  --accent-cyan:#bcf7fd; --accent-cyan-dark:#1ac3d8;
+  --bg-chip-on-cyan:#a9dde2; --bg-wash-cyan:#ecf9f9;
+  --text-primary:#fafaf8; --text-inverted:#202125;
+  --text-muted:rgba(32,33,37,.72); --text-muted-light:rgba(250,250,248,.62);
+  --border-dark:#202125; --fill-tile:rgba(32,33,37,.06);
+  /* type */
+  --font-body:"Switzer",system-ui,-apple-system,sans-serif;
+  --font-mono:"Space Grotesk",ui-monospace,"SFMono-Regular",monospace;
+  /* stage */
+  --w:1280px; --h:720px; --m:40px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:#0b0c0d}
+body{display:flex;align-items:center;justify-content:center;
+     font-family:var(--font-body);color:var(--text-inverted);
+     -webkit-font-smoothing:antialiased}
+
+/* ── stage: laid out at 1280x720, scaled to the window ─────────────────── */
+#stage{position:relative;flex:none;width:var(--w);height:var(--h);
+       transform-origin:center center;overflow:hidden;background:var(--bg-page)}
+
+/* ── slide ─────────────────────────────────────────────────────────────── */
+.slide{position:absolute;inset:0;display:none;flex-direction:column;
+       padding:40px 40px 44px;background:var(--bg-page);overflow:hidden}
+.slide.active{display:flex;animation:in .28s cubic-bezier(.22,1,.36,1)}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.slide--grey{background:var(--bg-grey)}
+.slide--cyan{background:var(--accent-cyan)}
+.slide--dark{background:var(--bg-dark);color:var(--text-primary)}
+/* the golden-cannon mesh, graphite slides only. Embedded so the file is self-contained.
+   This is illustrations/malha-1280x720-print.svg: strokes pre-flattened to #303134 on an opaque
+   graphite rect. Never embed the raw malha-1280x720.svg in anything exported to PDF: its
+   group opacity becomes a soft mask, and Quartz (Preview, QuickLook, WhatsApp previews on
+   Apple) renders that as a grey veil over the whole page. */
+.slide--dark.closing.mesh-on{opacity:1}
+.slide--dark.mesh-on{background-image:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MSIgaGVpZ2h0PSI3MjEiIHZpZXdCb3g9IjAgMCAxMjgxIDcyMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTI4MSIgaGVpZ2h0PSI3MjEiIGZpbGw9IiMyMDIxMjUiLz48Zz4KPHBhdGggZD0iTTAuNDU2OTA2IDM2MC40MzZIMTI4MC40NiIgc3Ryb2tlPSIjMzAzMTM0Ii8+CjxwYXRoIGQ9Ik0wLjQ1NjkwNiAxODAuNDM2SDEyODAuNDYiIHN0cm9rZT0iIzMwMzEzNCIvPgo8cGF0aCBkPSJNMC40NDkwMzcgNDUuNDM3NEgxMjgwLjQ1IiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTAuNDU0MjQ1IDY3Ni4xODFDNTAwLjMyNSA2NzYuMTgxIDc4MC41ODMgNjc2LjE4MSAxMjgwLjQ1IDY3Ni4xODEiIHN0cm9rZT0iIzMwMzEzNCIvPgo8cGF0aCBkPSJNMC40NTY5MDYgNTQwLjQzNkgxMjgwLjQ2IiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTAuNDU2OTA2IDcyMC40MzZMNjQwLjQ1NyAwLjQzNTc5MSIgc3Ryb2tlPSIjMzAzMTM0Ii8+CjxwYXRoIGQ9Ik0wLjQ1NjkwNiA3MjAuNDM2TDMyMC40NTcgMC40MzU3OTEiIHN0cm9rZT0iIzMwMzEzNCIvPgo8cGF0aCBkPSJNMC40NTY5MDYgMzYwLjQzNkw2NDAuNDU3IDAuNDM1NzkxIiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTAuNDU2OTA2IDM2MC40MzZMNjQwLjQ1NyA3MjAuNDM2IiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTY0MC40NTcgMC40MzU3OTFMMTI4MC40NiAzNjAuNDM2IiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTY0MC40NTcgNzIwLjQzNkwxMjgwLjQ2IDM2MC40MzYiIHN0cm9rZT0iIzMwMzEzNCIvPgo8cGF0aCBkPSJNMC40NTY5MDYgMC40MzU3OTFMNjQwLjQ1NyA3MjAuNDM2IiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTAuNDU2OTA2IDAuNDM1NzkxTDMyMC40NTcgNzIwLjQzNiIgc3Ryb2tlPSIjMzAzMTM0Ii8+CjxwYXRoIGQ9Ik0wLjQ1NjkwNiAwLjQzNTc5MUwxMjgwLjQ2IDcyMC40MzYiIHN0cm9rZT0iIzMwMzEzNCIvPgo8cGF0aCBkPSJNMC40NTY5MDYgNzIwLjQzNkwxMjgwLjQ2IDAuNDM2MDM1IiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTEyODAuNDYgNzIwLjQzNkw2NDAuNDU3IDAuNDM1NzkxIiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTEyODAuNDYgNzIwLjQzNkw5NjAuNDU3IDAuNDM1NzkxIiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTEyODAuNDYgMC40MzU3OTFMNjQwLjQ1NyA3MjAuNDM2IiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTEyODAuNDYgMC40MzU3OTFMOTYwLjQ1NyA3MjAuNDM2IiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTY0MC40NTcgMC40MzU3OTFWNzIwLjQzNiIgc3Ryb2tlPSIjMzAzMTM0Ii8+CjxwYXRoIGQ9Ik05NjAuNDU3IDAuNDM1NzkxVjcyMC40MzYiIHN0cm9rZT0iIzMwMzEzNCIvPgo8cGF0aCBkPSJNMTEyMC40NiAwLjQzNTc5MVY3MjAuNDM2IiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTE2MC40NTcgMC40MzU3OTFWNzIwLjQzNiIgc3Ryb2tlPSIjMzAzMTM0Ii8+CjxwYXRoIGQ9Ik0xMjAwLjQ2IDAuNDM1NzkxVjcyMC40MzYiIHN0cm9rZT0iIzMwMzEzNCIvPgo8cGF0aCBkPSJNODAuNDU2OSAwLjQzNTc5MVY3MjAuNDM2IiBzdHJva2U9IiMzMDMxMzQiLz4KPHBhdGggZD0iTTEyNDAuNDYgMC40MzU3OTFWNzIwLjQzNiIgc3Ryb2tlPSIjMzAzMTM0Ii8+CjxwYXRoIGQ9Ik00MC40NTY5IDAuNDM1NzkxVjcyMC40MzYiIHN0cm9rZT0iIzMwMzEzNCIvPgo8cGF0aCBkPSJNMzIwLjQ1NyAwLjQzNTc5MVY3MjAuNDM2IiBzdHJva2U9IiMzMDMxMzQiLz4KPC9nPgo8L3N2Zz4=");
+       background-repeat:no-repeat;background-position:center;background-size:1280px 720px}
+.fit{display:flex;flex-direction:column;flex:1;min-height:0;transform-origin:top left}
+
+/* ── rail: chip left, logo right (inner slides) ────────────────────────── */
+.rail{display:flex;align-items:flex-start;justify-content:space-between;height:28px;flex:none}
+.logo{width:108px;height:28px;color:var(--text-inverted);display:block}
+.slide--dark .logo{color:var(--text-primary)}
+.rail--cover{height:60px}
+.rail--cover .logo{width:232px;height:60px}
+
+/* ── chip and labels ───────────────────────────────────────────────────── */
+.chip{display:inline-flex;align-self:flex-start;padding:6px 8px;background:var(--bg-grey);
+      color:var(--text-inverted);font-family:var(--font-mono);font-weight:500;font-size:14px;
+      line-height:1.12;letter-spacing:1px;text-transform:uppercase}
+.slide--grey .chip{background:var(--bg-page)}
+.slide--cyan .chip{background:var(--bg-chip-on-cyan)}
+.slide--dark .chip{background:var(--accent-cyan);color:var(--text-inverted)}
+.label{font-family:var(--font-mono);font-weight:500;font-size:13px;line-height:1.2;
+       text-transform:uppercase}
+.tag{font-family:var(--font-mono);font-weight:500;font-size:16px;line-height:1.12;
+     text-transform:uppercase;letter-spacing:1px}
+.source{font-weight:500;font-size:12px;line-height:1.2;text-transform:uppercase;
+        color:var(--text-muted)}
+.slide--dark .source{color:var(--text-muted-light)}
+
+/* ── type ──────────────────────────────────────────────────────────────── */
+/* .head pins the content band: rail ends at y68, head is 261 tall, so content starts at y329
+   whether the title is one line or two. Never replace it with a margin. */
+.head{flex:none;height:261px;padding-top:59px;display:flex;flex-direction:column}
+/* --tight raises the band to y236 (440 tall) for the ladder and any full-height diagram */
+.head--tight{height:168px;padding-top:62px}
+.claim{font-weight:500;font-size:88px;line-height:1.12}      /* cover + closing only */
+.statement{font-weight:400;font-size:68px;line-height:1.2}
+.title{font-weight:400;font-size:52px;line-height:1.2}      /* sits at y127 inside .head */
+.subtitle{font-weight:400;font-size:18px;line-height:1.4;color:var(--text-muted);margin-top:21px}
+.question{font-weight:400;font-size:36px;line-height:1.2}
+.body{font-weight:400;font-size:14px;line-height:1.4}
+.lead{font-weight:400;font-size:16px;line-height:1.5;color:var(--text-muted);max-width:660px}
+.slide--dark .lead{color:var(--text-muted-light)}
+
+/* ── devices ───────────────────────────────────────────────────────────── */
+.ruler{display:flex;align-items:center;flex:none}
+.ruler i{width:8px;height:8px;background:currentColor;flex:none}
+.ruler span{flex:1;height:2px;background:currentColor}
+.rule{height:2px;background:currentColor;flex:none}
+
+.cards{display:flex;gap:12px;flex:1;min-height:0}
+.card{flex:1;display:flex;flex-direction:column;gap:20px;padding:20px;
+      border:2px solid var(--border-dark);border-radius:3px}
+.card--hl{background:var(--accent-cyan)}
+.card .num{font-weight:400;font-size:72px;line-height:1}
+.card .legend{font-weight:500;font-size:18px;line-height:1.2}
+.card .body{flex:1}
+
+.stat{border-left:2px solid var(--border-dark);padding:8px 0 8px 20px}
+.stat .v{font-weight:400;font-size:40px;line-height:1}
+.stat .k{font-weight:500;font-size:16px;line-height:1.2;color:var(--text-muted)}
+
+.rows{display:flex;flex-direction:column;flex:1;min-height:0}
+.rows > .row{flex:1}
+.row{display:flex;gap:16px;align-items:flex-start;padding:16px;
+     border:2px solid var(--border-dark);border-radius:3px}
+.row--hl{background:var(--accent-cyan)}
+.row .t{font-weight:400;font-size:20px;line-height:1.2}
+.tile{width:96px;height:96px;flex:none;display:grid;place-items:center;border-radius:2px;
+      background:var(--fill-tile)}
+.tile svg{width:44px;height:44px;color:var(--text-inverted)}
+
+.ladder{display:flex;align-items:flex-end;flex:1;min-height:0;
+        border-right:2px solid var(--border-dark);border-bottom:2px solid var(--border-dark);
+        background-image:repeating-linear-gradient(to right,var(--border-dark) 0 2px,transparent 2px 24px),
+                         repeating-linear-gradient(to bottom,var(--border-dark) 0 2px,transparent 2px 26px)}
+.step{flex:1;display:flex;flex-direction:column;justify-content:space-between;
+      padding:20px 16px;background:var(--accent-cyan);
+      border:2px solid var(--border-dark);margin-right:-2px}
+.step:last-child{margin-right:0}
+.step .t{font-weight:500;font-size:20px;line-height:1.15}
+.step .body{line-height:1.35}
+.step--top{background:var(--bg-dark);color:var(--text-primary)}
+
+.meshgrid .r{display:flex;margin-bottom:-2px}
+.meshgrid i{width:14px;height:14px;border:2px solid var(--border-dark);margin-right:-2px}
+
+.connector{display:flex;align-items:center;flex:none}
+.connector span{flex:1;height:2px;background:var(--border-dark)}
+.connector i{width:12px;height:12px;background:var(--border-dark);flex:none}
+
+figure.photo img{display:block;width:100%;height:240px;object-fit:cover;border-radius:3px}
+figure.photo figcaption{margin-top:6px;font-weight:500;font-size:12px;line-height:1.2;
+        text-transform:uppercase;text-align:center;color:var(--text-muted)}
+.who{display:flex;align-items:center;gap:8px}
+.who img{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none}
+.who .n{font-weight:500;font-size:12px;line-height:1.2;text-transform:uppercase}
+.who .r{font-weight:500;font-size:12px;line-height:1.2;text-transform:uppercase;
+        color:var(--text-muted)}
+
+/* ── chrome (never printed) ────────────────────────────────────────────── */
+#bar{position:fixed;left:0;right:0;bottom:0;height:2px;background:rgba(250,250,248,.14);z-index:9}
+#bar i{display:block;height:100%;background:var(--accent-cyan);transition:width .28s
+       cubic-bezier(.22,1,.36,1)}
+#count{position:fixed;right:14px;bottom:12px;z-index:9;font-family:var(--font-mono);font-weight:500;
+       font-size:11px;letter-spacing:1px;color:rgba(250,250,248,.5)}
+
+@page{size:1280px 720px;margin:0}
+@media print{
+  html,body{height:auto;overflow:visible;background:#fff;display:block}
+  #stage{width:1280px;height:auto;transform:none!important;overflow:visible}
+  .slide{display:flex!important;position:relative;inset:auto;width:1280px;height:720px;
+         overflow:hidden;page-break-after:always;break-after:page}
+  /* .slide.active's entrance animation outranks a bare .slide{animation:none} on specificity,
+     so the active slide can be snapshotted at its from{opacity:0} frame and print BLANK,
+     intermittently (the race moves with font-load time). Kill it with !important. */
+  .slide,.slide.active{animation:none!important;opacity:1!important}
+  .slide:last-of-type{page-break-after:auto;break-after:auto}
+  #bar,#count{display:none}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<!-- Logo, inlined once. Paths from ../logo/fator-logo.svg. Place with <use>, never paste again. -->
+<svg style="display:none" aria-hidden="true"><symbol id="fatorlogo" viewBox="0 0 465 120">
+<path d="M97.465 0H22.4906C10.0713 0 0 10.0709 0 22.4997V97.5003C0 109.925 10.0713 120 22.4906 120H97.465C109.884 120 119.956 109.925 119.956 97.5003V22.4997C119.956 10.0709 109.884 0 97.465 0ZM82.095 53.3468C77.7588 64.6822 73.5936 77.1335 63.014 85.2514C52.6864 93.1713 37.6627 91.8664 17.6956 91.8664C40.2986 84.545 35.778 50.9844 56.9416 34.7486C67.2692 26.8242 81.2359 28.1292 102.26 28.1292C90.9563 31.7921 86.4402 42.0115 82.095 53.3468Z" fill="currentColor"/>
+<path d="M187.234 18.7513C196.806 18.7513 198.524 20.7177 203.8 35.4461L206.499 34.7126L204.291 12.0014L201.592 12.2488C200.733 15.1918 199.14 15.9298 195.947 15.9298H155.945V18.2608C166.129 19.1203 166.376 19.1203 166.376 29.6771V93.0228C166.376 103.58 166.129 103.58 155.945 104.439V106.77H189.69V104.439C178.525 103.458 178.278 103.58 178.278 93.0228V67.1212H197.665V63.1927L178.278 63.9262V28.4486C178.278 18.7513 178.4 18.7513 187.234 18.7513Z" fill="currentColor"/>
+<path d="M252.272 90.5659V57.5453C252.272 45.7599 247.486 39.253 235.948 39.253C224.411 39.253 211.164 46.8669 211.164 54.1073C211.164 56.6858 212.756 59.5073 217.421 59.5073C228.463 59.5073 219.139 42.691 231.41 42.691C238.157 42.691 240.982 48.2169 240.982 60.8572V74.1186L227.361 78.659C214.11 83.078 209.324 86.7634 209.324 94.2513C209.324 100.511 212.882 107.999 222.328 107.999C229.201 107.999 235.584 103.823 240.982 99.6513V106.77H261.475V104.439C252.762 103.58 252.272 103.458 252.272 90.5659ZM240.982 90.5659C240.001 98.5443 232.759 101.492 228.221 101.492C223.066 101.492 220.857 97.1943 220.857 92.9013C220.857 87.9874 223.313 84.185 231.779 81.359L240.982 78.416V90.5659Z" fill="currentColor"/>
+<path d="M298.773 98.5443C296.565 100.754 293.745 102.599 290.065 102.599C285.648 102.599 283.313 99.8943 283.313 92.9013V45.7599L298.283 44.2884V41.71L283.313 39.991V26.9772H280.983C280.003 35.9411 273.741 41.71 264.538 41.71V44.2884L272.023 45.5124V94.6158C272.023 103.211 277.668 107.999 285.401 107.999C291.905 107.999 296.812 104.682 300.127 100.754L298.773 98.5443Z" fill="currentColor"/>
+<path d="M333.625 39.253C316.199 39.253 305.035 53.6168 305.035 75.4686C305.035 95.6013 314.238 107.999 332.028 107.999C349.818 107.999 360.618 93.6348 360.618 71.9091C360.618 51.6504 351.05 39.253 333.625 39.253ZM334.115 104.808C322.582 104.808 317.917 87.7444 317.917 69.0831C317.917 50.4219 322.946 42.4435 331.169 42.4435C343.197 42.4435 348.104 59.7548 348.104 77.921C348.104 96.0873 341.969 104.808 334.115 104.808Z" fill="currentColor"/>
+<path d="M406.265 39.253C400.498 39.253 395.469 42.322 389.334 50.4264V39.8695L387.125 39.253C381.723 45.0219 376.082 47.8479 366.51 47.8479V50.1789C375.097 50.1789 378.044 51.0384 378.044 59.0168V90.5659C378.044 103.458 377.675 103.701 367.734 104.439V106.77H402.216V104.439C389.824 103.58 389.334 103.458 389.334 90.5659V70.1901C389.334 53.8598 394.61 46.1289 400.008 46.1289C404.551 46.1289 404.304 52.5098 409.458 52.5098C413.138 52.5098 415.468 49.3194 415.468 46.0074C415.468 41.8315 411.667 39.253 406.265 39.253Z" fill="currentColor"/>
+<path d="M449.466 48.9414L447.199 42.7919H434.557L432.29 48.9414H426.404L437.565 19.2842H444.496L455.657 48.9414H449.466ZM440.006 28.0942L436.257 38.2561H445.499L441.75 28.0942L440.878 25.0412L440.006 28.0942Z" fill="currentColor"/>
+<path d="M459.115 48.9414V19.2842H465V48.9414H459.115Z" fill="currentColor"/>
+</symbol></svg>
+
+<div id="stage">
+
+<!-- ════════ 01 · COVER ════════ graphite, mesh at 16%, logo top-left, tag top-right, no cyan -->
+<section class="slide slide--dark mesh-on active">
+  <div class="rail rail--cover">
+    <svg class="logo" viewBox="0 0 232 60"><use href="#fatorlogo"/></svg>
+    <span class="tag">[ tag do deck ]</span>
+  </div>
+  <div class="fit">
+    <div class="ruler" style="margin-top:260px"><i></i><span></span><i></i></div>
+    <h1 class="claim" style="margin-top:132px">A frase que abre o deck,<br>em duas linhas.</h1>
+  </div>
+</section>
+
+<!-- ════════ 02 · TITLE + THREE CARDS ════════ the workhorse slide -->
+<section class="slide">
+  <div class="rail">
+    <span class="chip">seção</span>
+    <svg class="logo" viewBox="0 0 232 60"><use href="#fatorlogo"/></svg>
+  </div>
+  <div class="fit">
+    <div class="head"><h2 class="title">O título do slide, alinhado à esquerda.</h2></div>
+    <div class="cards">
+      <div class="card">
+        <p class="label">[rótulo do card]</p>
+        <div><p class="num">00%</p><p class="legend">A legenda do número.</p></div>
+        <p class="body">Uma ou duas frases de apoio.</p>
+        <p class="source">fonte, ano</p>
+      </div>
+      <div class="card">
+        <p class="label">[rótulo do card]</p>
+        <div><p class="num">00%</p><p class="legend">A legenda do número.</p></div>
+        <p class="body">Uma ou duas frases de apoio.</p>
+        <p class="source">fonte, ano</p>
+      </div>
+      <div class="card card--hl">
+        <p class="label">[o card que é o argumento]</p>
+        <div><p class="num">0x</p><p class="legend">A legenda do número.</p></div>
+        <p class="body">Uma ou duas frases de apoio.</p>
+        <p class="source">fonte, ano</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 03 · STATEMENT ════════ cyan ground, the slide is the highlight -->
+<section class="slide slide--cyan">
+  <div class="rail">
+    <span class="chip">seção</span>
+    <svg class="logo" viewBox="0 0 232 60"><use href="#fatorlogo"/></svg>
+  </div>
+  <div class="fit" style="justify-content:flex-end">
+    <p class="statement">Uma frase só, ancorada<br>na base do slide.</p>
+  </div>
+</section>
+
+<!-- ════════ 04 · ROWS WITH TILE ════════ grey ground, last row is the answer -->
+<section class="slide slide--grey">
+  <div class="rail">
+    <span class="chip">seção</span>
+    <svg class="logo" viewBox="0 0 232 60"><use href="#fatorlogo"/></svg>
+  </div>
+  <div class="fit">
+    <div class="head"><h2 class="title">Três opções, uma recomendada.</h2></div>
+    <div class="rows" style="gap:16px">
+      <div class="row">
+        <div class="tile"><svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="38" height="38"/><path d="M3 15h38M15 15v26"/></svg></div>
+        <div><p class="label">[1] primeira opção</p><p class="t" style="margin-top:6px">O título da opção.</p><p class="body" style="margin-top:4px">A consequência dela, em uma frase.</p><p class="source" style="margin-top:6px">fonte, ano</p></div>
+      </div>
+      <div class="row">
+        <div class="tile"><svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2"><circle cx="16" cy="16" r="13"/><circle cx="28" cy="28" r="13"/></svg></div>
+        <div><p class="label">[2] segunda opção</p><p class="t" style="margin-top:6px">O título da opção.</p><p class="body" style="margin-top:4px">A consequência dela, em uma frase.</p><p class="source" style="margin-top:6px">fonte, ano</p></div>
+      </div>
+      <div class="row row--hl">
+        <div class="tile"><svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 40 22 4l18 36z"/><path d="M13 24h18"/></svg></div>
+        <div><p class="label">[3] a recomendada</p><p class="t" style="margin-top:6px">O título da opção.</p><p class="body" style="margin-top:4px">A consequência dela, em uma frase.</p><p class="source" style="margin-top:6px">fonte, ano</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 05 · LADDER ════════ cyan lattice, outlined steps, top step inverted -->
+<section class="slide slide--cyan">
+  <div class="rail">
+    <span class="chip">seção</span>
+    <svg class="logo" viewBox="0 0 232 60"><use href="#fatorlogo"/></svg>
+  </div>
+  <div class="fit">
+    <div class="head head--tight"><h2 class="title">Em que degrau a operação está?</h2></div>
+    <div class="ladder">
+      <div class="step" style="height:178px"><p class="label">[nível 1]</p><div><p class="t">Primeiro</p><p class="body">Uma frase que descreve o degrau.</p></div></div>
+      <div class="step" style="height:230px"><p class="label">[nível 2]</p><div><p class="t">Segundo</p><p class="body">Uma frase que descreve o degrau.</p></div></div>
+      <div class="step" style="height:282px"><p class="label">[nível 3]</p><div><p class="t">Terceiro</p><p class="body">Uma frase que descreve o degrau.</p></div></div>
+      <div class="step" style="height:334px"><p class="label">[nível 4]</p><div><p class="t">Quarto</p><p class="body">Uma frase que descreve o degrau.</p></div></div>
+      <div class="step step--top" style="height:386px"><p class="label">[nível 5]</p><div><p class="t">Quinto</p><p class="body">Uma frase que descreve o degrau.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 06 · CLOSING ════════ graphite, mesh at 12%, one statement, one ask, one contact -->
+<section class="slide slide--dark mesh-on closing">
+  <div class="rail rail--cover">
+    <svg class="logo" viewBox="0 0 232 60"><use href="#fatorlogo"/></svg>
+    <span class="tag" style="text-align:right;line-height:1.4">Nome<br>+55 00 00000-0000</span>
+  </div>
+  <div class="fit" style="gap:40px;padding-top:258px">
+    <p class="claim">A afirmação final.<br>Em duas linhas.</p>
+    <div class="rule"></div>
+    <p class="question">Uma pergunta que pede resposta?</p>
+  </div>
+</section>
+
+</div>
+
+<div id="bar"><i></i></div>
+<div id="count"></div>
+
+<script>
+const W=1280,H=720;
+const stage=document.getElementById('stage');
+const slides=[...document.querySelectorAll('.slide')];
+let i=0;
+
+/* wrap everything after the rail in .fit so a full slide can auto-shrink */
+slides.forEach(s=>{
+  if(s.querySelector(':scope > .fit')) return;
+  const kids=[...s.children].filter(c=>!c.classList.contains('rail'));
+  if(!kids.length) return;
+  const box=document.createElement('div'); box.className='fit';
+  kids[0].before(box); kids.forEach(c=>box.appendChild(c));
+});
+
+function fitStage(){
+  stage.style.transform='scale('+Math.min(innerWidth/W,innerHeight/H)+')';
+}
+function fitSlide(s){
+  const box=s.querySelector(':scope > .fit'); if(!box) return;
+  box.style.transform='none'; box.style.width='100%';
+  const cs=getComputedStyle(s);
+  const avail=H-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom)-28-24;
+  const need=box.offsetHeight;               /* offsetHeight ignores the stage transform */
+  if(need>avail){
+    const k=Math.max(.6,avail/need);
+    box.style.transform='scale('+k+')'; box.style.width=(100/k)+'%';
+    if(k<.9) console.warn('slide '+(slides.indexOf(s)+1)+' auto-fit '+k.toFixed(2)+': trim it instead');
+  }
+}
+function fitAll(){
+  slides.forEach(s=>{
+    const hidden=!s.classList.contains('active');
+    if(hidden){s.style.visibility='hidden';s.style.display='flex';}
+    fitSlide(s);
+    if(hidden){s.style.display='';s.style.visibility='';}
+  });
+}
+function show(n){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  document.querySelector('#bar i').style.width=((i+1)/slides.length*100)+'%';
+  document.getElementById('count').textContent=(i+1)+' / '+slides.length;
+  fitSlide(slides[i]);
+}
+addEventListener('keydown',e=>{
+  if(['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){e.preventDefault();show(i+1)}
+  if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();show(i-1)}
+  if(e.key==='Home')show(0); if(e.key==='End')show(slides.length-1);
+});
+addEventListener('click',e=>{if(!e.target.closest('a'))show(i+1)});
+addEventListener('resize',()=>{fitStage();fitAll();show(i)});
+addEventListener('beforeprint',fitAll);
+fitStage(); fitAll(); show(0);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{fitAll();show(i)});
+</script>
+</body>
+</html>
