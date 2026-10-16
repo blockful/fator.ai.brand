@@ -1,0 +1,183 @@
+/*
+  Fator Design System: tokens
+  ---------------------------------------------------------------------------
+  Source of truth: Figma file 5NeLWpK0hvQIZqDHnt03LJ, page "💠Design System".
+  Four variable tiers, the same shape Orbit UI uses:
+
+    1. Brand              raw brand colour, one Default mode
+    2. Fator Primitives   raw numeric scales in Tailwind vocabulary
+    3. Shadcn/ui          semantic tokens, mode "Light" (Dark is one column away)
+    4. Fator / Theme      application tokens: page, surfaces, borders, text,
+                          icon, blocks, components
+
+  This file carries tiers 1 to 3. Tier 4 is layout intent and lives in the
+  components, not in CSS variables.
+
+  Never type a hex in a component. Pull a semantic token.
+*/
+
+:root {
+  /* ── Tier 1: brand colour, raw ───────────────────────────────── */
+  --fator-graphite: #202125;
+  --fator-paper: #fafaf8;
+  --fator-grey: #f2f2f2;
+  --fator-cyan: #bcf7fd;        /* the highlight */
+  --fator-cyan-dark: #1ac3d8;   /* strokes, labels and links on paper */
+  --fator-cyan-chip: #a9dde2;   /* a chip when the ground is cyan */
+  --fator-cyan-wash: #ecf9f9;   /* selected row, hover wash */
+  --fator-rail-dark: #404b51;   /* rules inside a graphite band */
+  --fator-red-on-paper: #c0392b;
+  --fator-red-on-dark: #ff9a9a;
+
+  /* ── Tier 2: numeric primitives ──────────────────────────────── */
+  --rounded-none: 0px;
+  --rounded-sm: 2px;    /* button, input, chip */
+  --rounded-md: 3px;    /* card, panel */
+  --rounded-lg: 4px;    /* image crop. The brand never passes 4px */
+  --rounded-full: 999px;/* status pill and avatar only */
+
+  --space-0: 0px;
+  --space-px: 1px;
+  --space-1: 4px;
+  --space-1_5: 6px;
+  --space-2: 8px;
+  --space-2_5: 10px;
+  --space-3: 12px;
+  --space-3_5: 14px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  --size-icon-sm: 16px;
+  --size-icon-md: 18px;
+  --size-icon-lg: 24px;
+  --size-control-sm: 32px;
+  --size-control-md: 36px;
+  --size-control-lg: 44px;
+  --size-row: 44px;
+  --size-row-lg: 48px;
+  --size-topbar: 56px;
+  --size-sidebar: 240px;
+  --size-page-max: 1440px;
+  --size-content-max: 1200px;
+
+  --text-xs: 12px;
+  --text-value: 13px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 28px;
+  --text-3xl: 32px;
+
+  --leading-4: 16px;
+  --leading-5: 20px;
+  --leading-6: 24px;
+  --leading-7: 28px;
+  --leading-8: 32px;
+  --leading-9: 36px;
+  --leading-10: 40px;
+
+  --tracking-tight: -0.5px;
+  --tracking-normal: 0px;
+  --tracking-mono: 1px;
+
+  --stroke-hairline: 1px;
+  --stroke-thick: 2px;
+
+  --font-sans: "Switzer", system-ui, -apple-system, sans-serif;
+  --font-mono: "Space Grotesk", ui-monospace, "SFMono-Regular", monospace;
+
+  /* ── Tier 3: shadcn semantic tokens ──────────────────────────── */
+  --background: var(--fator-paper);
+  --foreground: var(--fator-graphite);
+
+  /*
+    The app canvas sits behind the panels and is grey, so paper cards read as
+    cards rather than as holes in a white page. Sidebar, top bar and every panel
+    stay paper. This is the only grey the screen dialect ships.
+  */
+  --canvas: var(--fator-grey);
+  --card: var(--fator-paper);
+  --card-foreground: var(--fator-graphite);
+  --popover: var(--fator-paper);
+  --popover-foreground: var(--fator-graphite);
+
+  /*
+    primary FILLS the one action: light cyan with graphite ink.
+    It is a fill colour only. On paper it has far too little contrast to draw a
+    line or set text, so strokes, links, icons and the focus ring take
+    --accent-strong instead. The accent budget is still one per view.
+  */
+  --primary: var(--fator-cyan);
+  --primary-foreground: var(--fator-graphite);
+
+  --secondary: var(--fator-grey);
+  --secondary-foreground: var(--fator-graphite);
+  --muted: var(--fator-grey);
+  --muted-foreground: rgb(32 33 37 / 0.5);
+
+  /* accent is the selected and hover wash, with dark cyan ink */
+  --accent: var(--fator-cyan-wash);
+  --accent-foreground: var(--fator-cyan-dark);
+
+  --destructive: var(--fator-red-on-paper);
+  --destructive-foreground: var(--fator-paper);
+
+  --border: rgb(32 33 37 / 0.12);
+  --input: rgb(32 33 37 / 0.12);
+  --ring: var(--fator-cyan-dark);
+
+  /* the dark cyan: strokes, links, the active tab bar, data strokes, icons */
+  --accent-strong: var(--fator-cyan-dark);
+
+  --radius: var(--rounded-sm);
+
+  /* Fator additions shadcn has no slot for */
+  --graphite: var(--fator-graphite);
+  --highlight: var(--fator-cyan);
+  --highlight-chip: var(--fator-cyan-chip);
+  --wash: var(--fator-cyan-wash);
+  --tile: rgb(32 33 37 / 0.06);
+  --rail-on-dark: var(--fator-rail-dark);
+  --foreground-on-dark: var(--fator-paper);
+  --muted-foreground-on-dark: rgb(250 250 248 / 0.6);
+  --accent-on-dark: var(--fator-cyan);
+  --accent-muted-on-dark: rgb(188 247 253 / 0.6);
+  --destructive-on-dark: var(--fator-red-on-dark);
+
+  /* motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/*
+  A graphite surface inside the product: a toast, an empty state art area, a
+  marketing panel. Put this class on the surface and the tokens invert.
+  A whole dashboard on graphite reads as a slide, not as a tool, so do not put
+  it on <body>. The top bar is paper, not graphite: the shell is one continuous
+  paper surface divided only by hairlines.
+*/
+.on-graphite {
+  --background: var(--fator-graphite);
+  --foreground: var(--foreground-on-dark);
+  --card: var(--fator-graphite);
+  --card-foreground: var(--foreground-on-dark);
+  --muted-foreground: var(--muted-foreground-on-dark);
+  --primary: var(--fator-cyan);
+  --primary-foreground: var(--fator-graphite);
+  --accent-foreground: var(--fator-cyan);
+  --accent-strong: var(--fator-cyan);   /* the dark cyan goes dim on graphite */
+  --border: var(--rail-on-dark);
+  --input: var(--rail-on-dark);
+  --ring: var(--fator-cyan);
+  --destructive: var(--destructive-on-dark);
+  background: var(--background);
+  color: var(--foreground);
+}

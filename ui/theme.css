@@ -1,0 +1,100 @@
+/*
+  Fator Design System: Tailwind v4 theme
+  ---------------------------------------------------------------------------
+  Import tokens.css first, then this file. Every utility below resolves to a
+  token, so `bg-card`, `text-muted-foreground` and `border-border` behave the
+  way shadcn/ui expects out of the box.
+
+  On Tailwind v3 use the config at the bottom of this file instead.
+*/
+
+@import "./tokens.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-canvas: var(--canvas);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-accent-strong: var(--accent-strong);
+
+  --color-graphite: var(--graphite);
+  --color-highlight: var(--highlight);
+  --color-highlight-chip: var(--highlight-chip);
+  --color-wash: var(--wash);
+  --color-tile: var(--tile);
+  --color-rail-on-dark: var(--rail-on-dark);
+
+  --radius-none: var(--rounded-none);
+  --radius-sm: var(--rounded-sm);
+  --radius-md: var(--rounded-md);
+  --radius-lg: var(--rounded-lg);
+  --radius-full: var(--rounded-full);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/*
+  The eleven product type primitives. One class per UI/* text style in Figma.
+  Never set a family, size or weight outside them.
+*/
+@layer components {
+  .type-stat        { font: 400 var(--text-3xl)/1.1  var(--font-sans); letter-spacing: var(--tracking-tight); }
+  .type-page-title  { font: 400 var(--text-2xl)/1.2  var(--font-sans); }
+  .type-panel-title { font: 400 var(--text-xl)/1.2   var(--font-sans); }
+  .type-subtitle    { font: 400 var(--text-lg)/1.45  var(--font-sans); }
+  .type-body        { font: 400 var(--text-base)/1.5 var(--font-sans); }
+  .type-body-sm     { font: 400 var(--text-sm)/1.5   var(--font-sans); }
+  .type-body-sm-med { font: 500 var(--text-sm)/1.5   var(--font-sans); }
+  .type-caption     { font: 400 var(--text-xs)/1.4   var(--font-sans); }
+  .type-value       { font: 500 var(--text-value)/1.2 var(--font-mono); letter-spacing: var(--tracking-mono); }
+  .type-label       { font: 500 var(--text-xs)/1.2   var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
+  .type-label-lg    { font: 500 var(--text-sm)/1.2   var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
+}
+
+/*
+  ── Tailwind v3 alternative ────────────────────────────────────────────────
+  If the platform is on v3, drop the @theme block above and use this in
+  tailwind.config.ts instead. Values still come from tokens.css.
+
+  theme: {
+    extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        card: { DEFAULT: "var(--card)", foreground: "var(--card-foreground)" },
+        popover: { DEFAULT: "var(--popover)", foreground: "var(--popover-foreground)" },
+        primary: { DEFAULT: "var(--primary)", foreground: "var(--primary-foreground)" },
+        secondary: { DEFAULT: "var(--secondary)", foreground: "var(--secondary-foreground)" },
+        muted: { DEFAULT: "var(--muted)", foreground: "var(--muted-foreground)" },
+        accent: { DEFAULT: "var(--accent)", foreground: "var(--accent-foreground)" },
+        destructive: { DEFAULT: "var(--destructive)", foreground: "var(--destructive-foreground)" },
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        graphite: "var(--graphite)",
+        highlight: "var(--highlight)",
+        wash: "var(--wash)",
+        tile: "var(--tile)",
+      },
+      borderRadius: { none: "0px", sm: "2px", md: "3px", lg: "4px", full: "999px" },
+      fontFamily: { sans: ["Switzer", "system-ui", "sans-serif"], mono: ["Space Grotesk", "monospace"] },
+    },
+  }
+*/

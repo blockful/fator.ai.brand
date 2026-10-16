@@ -50,7 +50,7 @@ The `fatorlogo` SVG symbol used in HTML decks was exported from node `768:147`.
 
 ## The whole file, page by page
 
-Fifteen pages. Which one is authoritative depends on the medium.
+Sixteen pages. Which one is authoritative depends on the medium.
 
 | Page | Node | Holds | Authority |
 |---|---|---|---|
@@ -65,6 +65,7 @@ Fifteen pages. Which one is authoritative depends on the medium.
 | `Business Card` | `1044:1655` | 5 front and 5 back variants, 90 x 50mm with 3mm bleed | Print recipe |
 | `📦 Exportáveis` | `740:2` | 16 logo and symbol artboards on every ground | Logo exports |
 | `🎯 Marca` | `723:357` | The eight-frame brand guide | The written brand |
+| `💠 Design System` | `1099:402` | Four-tier variables, `UI/*` text styles, 30 components in seven bands (FOUNDATION, LAYOUT, NAVIGATION, DATA ENTRY, DATA DISPLAY, FEEDBACK, EXAMPLE), App Shell at 1440x900, "Painel do cliente" example | The platform UI; handoff in `ui/` |
 | `---`, `----`, `---` | `742:610`, `742:611`, `742:612` | Empty separators | none |
 
 ## Deck pages: the slide frames

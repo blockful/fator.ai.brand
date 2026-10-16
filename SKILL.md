@@ -23,6 +23,7 @@ ink corrected, see §4). When the LP changes, re-copy; do not edit the copies he
 | [`typography/`](typography/) | Where to download each face. The base64 `fonts-embedded.css` stays in the private skills repo (§3) |
 | [`illustrations/`](illustrations/) | The malha mesh, screen and flattened print versions (§8) |
 | [`social-media-cover/`](social-media-cover/) | The og-image shipped by the LP |
+| [`ui/`](ui/) | The platform (dashboard) design-system handoff: four-tier variables, the `UI/*` type scale, 30 component specs, `tokens.css` + `theme.css` ready for shadcn |
 | [`references/`](references/) | Per-medium deep guides: deck, web, social/print, documents, Figma node map, devices, legacy |
 | [`templates/`](templates/) | `deck.html`, the clone-ready 1280x720 deck |
 | [`scripts/`](scripts/) | `brand-check.sh`, the runnable gate (§8) |
@@ -53,7 +54,8 @@ Everything else routes below.
 | A commercial piece (R1, R2, RN) | `fator-html-presentation` §1 for the family, §7 for the R2, its `references/rn-proposta.md` for the proposal | the templates above. Never rebuild one |
 | Any other deck, presentation, slides | [`references/deck.md`](references/deck.md) + [`templates/deck.html`](templates/deck.html) | `fator-html-presentation` for the sales gates, `html-presentation` for fit and PDF, `presentation-design` if it must live in Figma |
 | Google Slides deck | [`references/deck.md`](references/deck.md) §7 | the `slides` skill for the API mechanics. Switzer does not exist in Slides: §7 rules the substitution |
-| Website, landing page, product or dashboard UI | [`references/web-ui.md`](references/web-ui.md) | the `fator.ai` repo's own components; `frontend-design` for engineering |
+| Website or landing page | [`references/web-ui.md`](references/web-ui.md) | the `fator.ai.lp` repo's own components; `frontend-design` for engineering |
+| Product or dashboard UI | [`ui/README.md`](ui/README.md), then [`references/web-ui.md`](references/web-ui.md) §6 | copy `ui/tokens.css` + `ui/theme.css`, install shadcn as normal |
 | A PDF a client or lead will see (forwarded material, WhatsApp piece, annex) | [`references/deck.md`](references/deck.md) + [`templates/deck.html`](templates/deck.html) | **Landscape deck, never an A4 document.** Isadora's ruling, Sep 2026: an A4 portrait lead piece was rejected as not visual |
 | Internal spreadsheet, report, document, one-pager, chart | [`references/data-and-reports.md`](references/data-and-reports.md) | `dataviz` for the chart form |
 | Social post, carousel, LinkedIn cover | [`references/social-and-print.md`](references/social-and-print.md) §1-§2 | `social-media-design` for the queue and handoff |

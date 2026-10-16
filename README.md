@@ -75,6 +75,15 @@ A textura de grade da marca, usada em capas, fechamentos e na og-image.
 
 <br>
 
+## UI da plataforma (dashboard)
+
+O design system do produto vive na pasta [ui/](ui/), espelhando a página
+💠 Design System do Figma: variáveis em quatro camadas, escala de texto própria
+da interface, especificação de 30 componentes com variantes (botões, formulários,
+tabelas, sidebar, abas, alertas) e os arquivos [ui/tokens.css](ui/tokens.css) e
+[ui/theme.css](ui/theme.css), prontos para usar com shadcn/ui sem ajuste por
+componente. O [ui/README.md](ui/README.md) explica a arquitetura e as decisões.
+
 ## Templates e guia completo
 
 - [templates/deck.html](templates/deck.html): deck 1280 x 720 pronto para clonar, com fontes embutidas, malha e logo já posicionados.
